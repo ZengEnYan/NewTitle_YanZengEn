@@ -18,7 +18,9 @@ import java.util.List;
 
 public class HomeFragment extends Fragment {
 
-    private String[] title = {"推荐", "热点", "阳光宽带", "北京", "社会", "娱乐", "问答", "图片", "科技", "汽车", "体育", "财经", "军事", "国际", "段子", "趣图", "美女", "健康", "正能量", "特卖", "房产"};
+
+    private String[] title = {"推荐", "热点", "阳光宽带",  "社会", "娱乐", "科技", "汽车", "体育", "财经", "军事", "旅游", "CBA", "笑话", "正能量","电影"};
+    String[] titles ={"T1348647909107", "T1370583240249", "T1351233117091",  "T1348648037603", "T1348648517839", "T1348649580692", "T1348654060988", "T1348649079062", "T1348648756099", "T1348648141035", "T1348654204705", "T1348649475931", "T1350383429665", "T1348654225495", "T1348648650048"};
     private List<Fragment> list;
     private ViewPager viewPager;
     private TabLayout tabLayout;
@@ -55,7 +57,13 @@ public class HomeFragment extends Fragment {
     private void initData() {
         list = new ArrayList<>();
         for (int i = 0; i < title.length; i++) {
-            TitleFragment fragment = new TitleFragment();
+            VideoTitleFragment fragment = new VideoTitleFragment();
+
+            //fragment利用Bundle传值
+            Bundle bundle = new Bundle();
+            bundle.putString("type",titles[i]);
+            fragment.setArguments(bundle);
+
             list.add(fragment);
         }
     }
