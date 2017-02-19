@@ -10,12 +10,11 @@
         android:layout_height="100dp">
 
         <TextView
-            android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp"
             android:textSize="16sp"
-            android:text="TITLE"/>
+            android:id="@+id/titleName"/>
 
 
 
@@ -32,16 +31,14 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:textSize="12sp"
-                android:text="网站"/>
+                android:textSize="12sp"/>
 
             <TextView
                 android:id="@+id/replyCount"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:textSize="12sp"
-                android:layout_height="wrap_content"
-                android:text="评论数"/>
+                android:layout_height="wrap_content"/>
 
             <ImageView
                 android:layout_width="0dp"
@@ -55,10 +52,9 @@
     
     <ImageView
         android:id="@+id/img"
-        android:layout_width="150dp"
+        android:layout_width="130dp"
         android:layout_height="100dp"
         android:scaleType="fitXY"
-        android:padding="8dp"
-        />
+        android:padding="8dp"/>
 
 </LinearLayout>

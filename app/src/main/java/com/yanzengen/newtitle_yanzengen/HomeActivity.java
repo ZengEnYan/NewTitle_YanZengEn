@@ -14,6 +14,10 @@ import com.yanzengen.newtitle_yanzengen.fragment.HomeFragment;
 import com.yanzengen.newtitle_yanzengen.fragment.NoLoginFragment;
 import com.yanzengen.newtitle_yanzengen.fragment.VideoFragment;
 
+/**
+ * 横向界面架构
+ * Activity加Fragment
+ */
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener{
 
     private FrameLayout frameLayout;

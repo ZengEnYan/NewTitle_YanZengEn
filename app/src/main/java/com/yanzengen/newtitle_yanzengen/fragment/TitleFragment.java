@@ -1,35 +1,38 @@
 package com.yanzengen.newtitle_yanzengen.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
-import com.google.gson.Gson;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.yanzengen.newtitle_yanzengen.R;
+import com.yanzengen.newtitle_yanzengen.WebViewActivity;
 import com.yanzengen.newtitle_yanzengen.adapter.HomeNewsAdapter;
-import com.yanzengen.newtitle_yanzengen.bean.NewsTitleBean;
+import com.yanzengen.newtitle_yanzengen.bean.NewsContent;
+import com.yanzengen.newtitle_yanzengen.http.CallbackNewsData;
+import com.yanzengen.newtitle_yanzengen.http.HttpUtils;
 
-import org.xutils.common.Callback;
-import org.xutils.http.RequestParams;
-import org.xutils.x;
+import java.util.ArrayList;
 
 /**
  * Created by Administrator on 2017/2/11.
  */
 
-public class TitleFragment extends Fragment implements PullToRefreshListView.OnRefreshListener2{
+public class TitleFragment extends Fragment implements PullToRefreshListView.OnRefreshListener2,CallbackNewsData<NewsContent>{
 
     private View view;
     private String type;
-    private int currentPager=20;
-    private NewsTitleBean newsTitleBean;
+    private int currentPager=0;
     private PullToRefreshListView pullListView;
     private HomeNewsAdapter homeNewsAdapter;
+    private boolean isNeedClear = false;
+    private String url;
 
     @Nullable
     @Override
@@ -47,80 +50,59 @@ public class TitleFragment extends Fragment implements PullToRefreshListView.OnR
             type = arguments.getString("type");
         }
 
+        url = "http://c.m.163.com/nc/article/headline/"+type+"/"+currentPager+"-20.html";
         //初始化view
         initView();
         //初始化数据
         initData();
-
-        londDataFromServer(false);
-
+        HttpUtils.loadDataFromServer(url, NewsContent.class, this);
     }
 
     private void initView() {
 
         pullListView = (PullToRefreshListView) view.findViewById(R.id.pullListView);
         pullListView.setMode(PullToRefreshBase.Mode.BOTH);
+        pullListView.setOnRefreshListener(this);
 
     }
 
     private void initData() {
-
         homeNewsAdapter = new HomeNewsAdapter(getActivity());
-
-    }
-    private void londDataFromServer(final boolean isNeedClear) {
-
-        String path = "http://c.m.163.com/nc/article/headline/"+type+"/0-"+currentPager+".html";
-
-        x.http().get(new RequestParams(path), new Callback.CommonCallback<String>() {
-
-            @Override
-            public void onSuccess(String result) {
-                Gson gson = new Gson();
-
-                newsTitleBean = gson.fromJson(result, NewsTitleBean.class);
-
-                homeNewsAdapter.addData(newsTitleBean,isNeedClear);
-
-                homeNewsAdapter.notifyDataSetChanged();
-
-                pullListView.onRefreshComplete();
-
-                //http://c.m.163.com/nc/article/headline/T1348647909107/0-40.html
-            }
-
-            @Override
-            public void onError(Throwable ex, boolean isOnCallback) {
-
-            }
-
-            @Override
-            public void onCancelled(CancelledException cex) {
-
-            }
-
-            @Override
-            public void onFinished() {
-
-            }
-        });
-
+        pullListView.setAdapter(homeNewsAdapter);
+        HttpUtils.loadDataFromServer(url, NewsContent.class, this);
     }
     // 下拉刷新的方法
     @Override
     public void onPullDownToRefresh(PullToRefreshBase refreshView) {
-
-        currentPager=20;
-
-        londDataFromServer(true);
-
+        currentPager=0;
+        isNeedClear=true;
+        HttpUtils.loadDataFromServer(url, NewsContent.class, this);
     }
     //上拉加载的方法
     @Override
     public void onPullUpToRefresh(PullToRefreshBase refreshView) {
         currentPager+=20;
+        isNeedClear=false;
+        HttpUtils.loadDataFromServer(url, NewsContent.class, this);;
+    }
 
-        londDataFromServer(false);
+    @Override
+    public void success(final ArrayList<NewsContent> newsContents) {
+
+        homeNewsAdapter.addData(newsContents,false);
+        homeNewsAdapter.notifyDataSetChanged();
+        pullListView.onRefreshComplete();
+
+        pullListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                    Intent intent = new Intent(getActivity(),WebViewActivity.class);
+                    intent.putExtra("webViewUrl",newsContents.get(position-1).getUrl());
+                    startActivity(intent);
+
+            }
+        });
 
     }
 }
