@@ -1,7 +1,9 @@
-package com.yanzengen.newtitle_yanzengen;
+package com.yanzengen.newtitle_yanzengen.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+
+import com.yanzengen.newtitle_yanzengen.R;
 
 public class NoNetActivity extends Activity {
 

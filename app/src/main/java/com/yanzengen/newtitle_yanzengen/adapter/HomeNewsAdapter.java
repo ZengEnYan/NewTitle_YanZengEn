@@ -87,6 +87,8 @@ public class HomeNewsAdapter extends BaseAdapter {
                 holderOne.replyCount = (TextView) convertView.findViewById(R.id.replyCount);
                 holderOne.source = (TextView) convertView.findViewById(R.id.source);
                 holderOne.img = (ImageView) convertView.findViewById(R.id.img);
+                holderOne.Xx = (ImageView) convertView.findViewById(R.id.X);
+
                 convertView.setTag(holderOne);
             }else if(getItemViewType(position)==TYPE_TWO){
                 holderTwo = new ViewHolderTwo();
@@ -94,6 +96,7 @@ public class HomeNewsAdapter extends BaseAdapter {
                 holderTwo.img = (ImageView) convertView.findViewById(R.id.img);
                 holderTwo.img_one = (ImageView) convertView.findViewById(R.id.img_one);
                 holderTwo.img_two = (ImageView) convertView.findViewById(R.id.img_two);
+                holderTwo.Xx = (ImageView) convertView.findViewById(R.id.X);
 
                 holderTwo.title = (TextView) convertView.findViewById(R.id.titleName);
                 holderTwo.ptime = (TextView) convertView.findViewById(R.id.ptime);
@@ -115,6 +118,7 @@ public class HomeNewsAdapter extends BaseAdapter {
 
                 String imgUrl = getItem(position).getImgsrc();
 
+                holderOne.Xx.setImageResource(R.drawable.ugc_icon_not_interested);
                 ImageLoader.getInstance().displayImage(imgUrl,holderOne.img,options);
 
             }else if (getItemViewType(position)==TYPE_TWO){
@@ -128,6 +132,7 @@ public class HomeNewsAdapter extends BaseAdapter {
                 String imgUrl1 = getItem(position).getImgextra().get(0).getImgsrc();
                 String imgUrl2 = getItem(position).getImgextra().get(1).getImgsrc();
 
+                holderTwo.Xx.setImageResource(R.drawable.ugc_icon_not_interested);
                 ImageLoader.getInstance().displayImage(imgUrl,holderTwo.img,options);
                 ImageLoader.getInstance().displayImage(imgUrl1,holderTwo.img_one,options);
                 ImageLoader.getInstance().displayImage(imgUrl2,holderTwo.img_two,options);
@@ -154,6 +159,7 @@ public class HomeNewsAdapter extends BaseAdapter {
         TextView source;
         TextView replyCount;
         ImageView img;
+        ImageView Xx;
 
     }
 
@@ -165,6 +171,7 @@ public class HomeNewsAdapter extends BaseAdapter {
         ImageView img_one;
         ImageView img_two;
         ImageView img;
+        ImageView Xx;
 
     }
 

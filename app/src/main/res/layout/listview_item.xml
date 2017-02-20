@@ -41,10 +41,10 @@
                 android:layout_height="wrap_content"/>
 
             <ImageView
+                android:id="@+id/X"
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="20dp"
-                android:src="@drawable/ugc_icon_not_interested"/>
+                android:layout_height="20dp"/>
 
         </LinearLayout>
 

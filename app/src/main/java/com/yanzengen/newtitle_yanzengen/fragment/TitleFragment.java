@@ -12,7 +12,7 @@ import android.widget.AdapterView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.yanzengen.newtitle_yanzengen.R;
-import com.yanzengen.newtitle_yanzengen.WebViewActivity;
+import com.yanzengen.newtitle_yanzengen.activity.WebViewActivity;
 import com.yanzengen.newtitle_yanzengen.adapter.HomeNewsAdapter;
 import com.yanzengen.newtitle_yanzengen.bean.NewsContent;
 import com.yanzengen.newtitle_yanzengen.http.CallbackNewsData;
@@ -81,7 +81,7 @@ public class TitleFragment extends Fragment implements PullToRefreshListView.OnR
     //上拉加载的方法
     @Override
     public void onPullUpToRefresh(PullToRefreshBase refreshView) {
-        currentPager+=20;
+        currentPager++;
         isNeedClear=false;
         HttpUtils.loadDataFromServer(url, NewsContent.class, this);;
     }
@@ -89,7 +89,7 @@ public class TitleFragment extends Fragment implements PullToRefreshListView.OnR
     @Override
     public void success(final ArrayList<NewsContent> newsContents) {
 
-        homeNewsAdapter.addData(newsContents,false);
+        homeNewsAdapter.addData(newsContents,isNeedClear);
         homeNewsAdapter.notifyDataSetChanged();
         pullListView.onRefreshComplete();
 

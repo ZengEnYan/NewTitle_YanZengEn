@@ -1,4 +1,4 @@
-package com.yanzengen.newtitle_yanzengen;
+package com.yanzengen.newtitle_yanzengen.activity;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 
+import com.yanzengen.newtitle_yanzengen.R;
 import com.yanzengen.newtitle_yanzengen.fragment.CareFragment;
 import com.yanzengen.newtitle_yanzengen.fragment.HomeFragment;
 import com.yanzengen.newtitle_yanzengen.fragment.NoLoginFragment;

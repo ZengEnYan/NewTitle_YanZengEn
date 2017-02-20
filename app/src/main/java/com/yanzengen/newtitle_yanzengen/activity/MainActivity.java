@@ -1,4 +1,4 @@
-package com.yanzengen.newtitle_yanzengen;
+package com.yanzengen.newtitle_yanzengen.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,6 +7,8 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+
+import com.yanzengen.newtitle_yanzengen.R;
 
 /**
  * 导航页
