@@ -21,7 +21,8 @@ public class VideoFragment extends Fragment {
     private View view;
     private TabLayout tableLayout_video;
     private ViewPager viewPager_video;
-    private String[] title = {"推荐", "热点", "阳光宽带",  "社会", "娱乐", "科技", "汽车", "体育", "财经", "军事", "旅游", "CBA", "笑话", "正能量","电影"};
+    private String[] title = {"热点视频", "娱乐视频", "搞笑视频", "精品视频","热点视频"};
+    private String[] titless= {"V9LG4B3A0","V9LG4CHOR","V9LG4E6VR","00850FRB","V9LG4B3A0"};
     private List<Fragment> list;
 
     @Override
@@ -42,9 +43,7 @@ public class VideoFragment extends Fragment {
         VideoFragmentPagerAdapter pagerAdapter = new VideoFragmentPagerAdapter(getActivity().getSupportFragmentManager(),getActivity(),list,title);
 
         viewPager_video.setAdapter(pagerAdapter);
-
         tableLayout_video.setupWithViewPager(viewPager_video);
-
         tableLayout_video.setTabMode(TabLayout.MODE_SCROLLABLE);
 
 
@@ -66,7 +65,7 @@ public class VideoFragment extends Fragment {
 
             //fragment利用Bundle传值
             Bundle bundle = new Bundle();
-            bundle.putString("type",title[i]);
+            bundle.putString("type",titless[i]);
             fragment.setArguments(bundle);
 
             list.add(fragment);

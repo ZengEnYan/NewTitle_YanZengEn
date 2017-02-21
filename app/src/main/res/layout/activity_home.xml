@@ -71,7 +71,7 @@
                 android:button="@null"
                 android:layout_gravity="center_horizontal"
                 android:id="@+id/rbt_Video"
-                android:text="视频"/>
+                android:text="阳光宽频"/>
 
         </LinearLayout>
 
@@ -120,7 +120,7 @@
                 android:textSize="12sp"
                 android:button="@null"
                 android:layout_gravity="center_horizontal"
-                android:text="未登陆"
+                android:text="我的"
                 android:id="@+id/rbt_NoLogin"/>
 
         </LinearLayout>

@@ -25,7 +25,10 @@
             android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".activity.NoNetActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".activity.WebViewActivity"/>
+        <activity android:name=".activity.WebViewActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.SystemSeting"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
