@@ -78,7 +78,7 @@ public class VideoTitleFragment extends Fragment implements PullToRefreshBase.On
     //加载方法
     @Override
     public void onPullUpToRefresh(PullToRefreshBase refreshView) {
-        pageSize=10;
+        pageSize+=10;
         isClear=false;
         HttpUtils.loadDataFromServer(url, VideoBean.class,this);
     }

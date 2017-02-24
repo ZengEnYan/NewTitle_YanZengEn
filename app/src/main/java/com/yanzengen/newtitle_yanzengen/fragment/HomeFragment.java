@@ -1,6 +1,7 @@
 package com.yanzengen.newtitle_yanzengen.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -9,14 +10,16 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.yanzengen.newtitle_yanzengen.R;
+import com.yanzengen.newtitle_yanzengen.activity.AddTatlbar;
 import com.yanzengen.newtitle_yanzengen.adapter.MyFragmentPagerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements View.OnClickListener{
 
     //http://v.juhe.cn/toutiao/index?type=top&key=da2b5b03e5955783e81ad6603831fe3a
 
@@ -26,12 +29,21 @@ public class HomeFragment extends Fragment {
     private ViewPager viewPager;
     private TabLayout tabLayout;
     private View view;
+    private ImageView add;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        view = View.inflate(getActivity(), R.layout.fragment_home, null);
+        if(view!=null){
+            ViewGroup group = (ViewGroup) view.getParent();
+            if(group!=null){
+                group.removeView(view);
+            }
+        }else{
+            view = View.inflate(getActivity(), R.layout.fragment_home, null);
+        }
+
 
         return view;
     }
@@ -39,6 +51,10 @@ public class HomeFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        add = (ImageView) view.findViewById(R.id.addTitlbar);
+
+        add.setOnClickListener(this);
 
         tabLayout = (TabLayout) view.findViewById(R.id.tabLayout_title);
         viewPager = (ViewPager) view.findViewById(R.id.viewPager);
@@ -66,6 +82,17 @@ public class HomeFragment extends Fragment {
             fragment.setArguments(bundle);
             list.add(fragment);
 
+        }
+    }
+    //点击事件
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.addTitlbar:
+                Intent intent = new Intent(getActivity(), AddTatlbar.class);
+
+                startActivity(intent);
+                break;
         }
     }
 }

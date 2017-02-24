@@ -34,4 +34,8 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'fm.jiecao:jiecaovideoplayer:5.5'
     compile project(':PushSDK')
+    compile 'org.greenrobot:eventbus:3.0.0'
+
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
 }

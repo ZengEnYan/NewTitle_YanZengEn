@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:background="?attr/mainBackground"
     tools:context="com.yanzengen.newtitle_yanzengen.fragment.HomeFragment">
 
     <RelativeLayout
@@ -49,6 +50,7 @@
         </android.support.design.widget.TabLayout>
 
         <ImageView
+            android:id="@+id/addTitlbar"
             android:layout_width="35dp"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
@@ -68,7 +70,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#ffffff"
         android:id="@+id/viewPager"/>
 
 </LinearLayout>

@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/mainBackground"
     android:orientation="vertical">
     
     <fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard
@@ -11,19 +12,47 @@
 
     </fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal">
+        android:layout_height="55dp"
+        >
 
         <ImageView
+            android:layout_centerVertical="true"
+            android:id="@+id/topicImg"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:padding="4dp"
+            android:layout_marginLeft="5dp"
             android:src="@drawable/weixin_allshare_normal"/>
 
-    </LinearLayout>
+        <TextView
+            android:layout_toRightOf="@id/topicImg"
+            android:id="@+id/topicName"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:padding="8dp"/>
 
+        <ImageView
+            android:id="@+id/more_video"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:src="@drawable/more_video"/>
+
+        <TextView
+            android:layout_centerVertical="true"
+            android:textSize="14dp"
+            android:padding="8dp"
+            android:layout_toLeftOf="@+id/more_video"
+            android:id="@+id/ping"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
 
 
 </LinearLayout>

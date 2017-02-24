@@ -2,14 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/mainBackground"
     android:orientation="vertical">
 
     <View
+        android:background="#e6e6e6"
         android:layout_width="match_parent"
         android:layout_height="1dp"/>
     
     <RelativeLayout
-        android:background="#ffffff"
         android:layout_width="match_parent"
         android:layout_height="46dp">
 
@@ -30,11 +31,11 @@
     </RelativeLayout>
 
     <View
+        android:background="#e6e6e6"
         android:layout_width="match_parent"
         android:layout_height="10dp"/>
 
     <RelativeLayout
-        android:background="#ffffff"
         android:layout_width="match_parent"
         android:layout_height="50dp">
 
@@ -58,11 +59,11 @@
     </RelativeLayout>
     
     <View
+        android:background="#e6e6e6"
         android:layout_width="match_parent"
         android:layout_height="1dp"/>
 
     <RelativeLayout
-        android:background="#ffffff"
         android:layout_width="match_parent"
         android:layout_height="50dp">
 
@@ -86,11 +87,11 @@
     </RelativeLayout>
 
     <View
+        android:background="#e6e6e6"
         android:layout_width="match_parent"
         android:layout_height="1dp"/>
 
     <RelativeLayout
-        android:background="#ffffff"
         android:layout_width="match_parent"
         android:layout_height="50dp">
 
@@ -113,11 +114,11 @@
     </RelativeLayout>
 
     <View
+        android:background="#e6e6e6"
         android:layout_width="match_parent"
         android:layout_height="1dp"/>
 
     <RelativeLayout
-        android:background="#ffffff"
         android:layout_width="match_parent"
         android:layout_height="50dp">
 
@@ -141,11 +142,11 @@
     </RelativeLayout>
 
     <View
+        android:background="#e6e6e6"
         android:layout_width="match_parent"
         android:layout_height="1dp"/>
 
     <RelativeLayout
-        android:background="#ffffff"
         android:layout_width="match_parent"
         android:layout_height="50dp">
 
@@ -168,14 +169,14 @@
     </RelativeLayout>
     
     <View
+        android:background="#e6e6e6"
         android:layout_width="match_parent"
         android:layout_height="10dp"/>
 
     <RelativeLayout
         android:id="@+id/systemSet"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="#ffffff">
+        android:layout_height="50dp">
 
         <TextView
             android:layout_centerVertical="true"
@@ -196,11 +197,11 @@
     </RelativeLayout>
 
     <View
+        android:background="#e6e6e6"
         android:layout_width="match_parent"
         android:layout_height="1dp"/>
 
     <RelativeLayout
-        android:background="#ffffff"
         android:layout_width="match_parent"
         android:layout_height="50dp">
 
@@ -222,6 +223,11 @@
             android:text="1.0"/>
 
     </RelativeLayout>
+
+    <View
+        android:background="#e6e6e6"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -260,5 +266,6 @@
         </LinearLayout>
 
     </RelativeLayout>
+
 
 </LinearLayout>

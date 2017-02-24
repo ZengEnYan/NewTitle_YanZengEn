@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="?attr/mainBackground"
     tools:context="com.yanzengen.newtitle_yanzengen.activity.HomeActivity">
 
     <FrameLayout
@@ -124,6 +125,13 @@
                 android:id="@+id/rbt_NoLogin"/>
 
         </LinearLayout>
+
+        <!--<Button-->
+            <!--android:id="@+id/bt_night"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="夜间"/>-->
 
     </RadioGroup>
 

@@ -3,13 +3,17 @@ package com.yanzengen.newtitle_yanzengen.activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import com.yanzengen.newtitle_yanzengen.R;
+import com.yanzengen.newtitle_yanzengen.application.XutilsApplication;
 import com.yanzengen.newtitle_yanzengen.fragment.CareFragment;
 import com.yanzengen.newtitle_yanzengen.fragment.HomeFragment;
 import com.yanzengen.newtitle_yanzengen.fragment.NoLoginFragment;
@@ -34,6 +38,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private RadioButton rbt_video;
     private RadioButton rbt_care;
     private RadioButton rbt_noLogin;
+    private Button bt_night;
+
+    // 默认是日间模式
+    private int theme = R.style.AppTheme;
+
+    private long firstTime = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,9 +75,15 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         rbt_care = (RadioButton) findViewById(R.id.rbt_Care);
         rbt_noLogin = (RadioButton) findViewById(R.id.rbt_NoLogin);
 
-        iv_home.setImageResource(R.drawable.b_newhome_tabbar_press);
-        rbt_home.setTextColor(Color.RED);
-        getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,new HomeFragment()).commit();
+        if(XutilsApplication.frag){
+            getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,new HomeFragment()).commit();
+            iv_home.setImageResource(R.drawable.b_newhome_tabbar_press);
+            rbt_home.setTextColor(Color.RED);
+            XutilsApplication.frag = false;
+        }else {
+            iv_noLogin.setImageResource(R.drawable.b_newnologin_tabbar_press);
+            rbt_noLogin.setTextColor(Color.RED);
+        }
 
         ll_home.setOnClickListener(this);
         ll_video.setOnClickListener(this);
@@ -76,7 +92,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    //
+    //替换
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -141,5 +157,25 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
         }
+    }
+
+    //d点击两次退出程序
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        // TODO Auto-generated method stub
+        switch(keyCode)
+        {
+            case KeyEvent.KEYCODE_BACK:
+                long secondTime = System.currentTimeMillis();
+                if (secondTime - firstTime > 2000) {                                         //如果两次按键时间间隔大于2秒，则不退出
+                    Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
+                    firstTime = secondTime;//更新firstTime
+                    return true;
+                } else {                                                    //两次按键小于2秒时，退出应用
+                    System.exit(0);
+                }
+                break;
+        }
+        return super.onKeyUp(keyCode, event);
     }
 }

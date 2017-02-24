@@ -37,7 +37,14 @@ public class TitleFragment extends Fragment implements PullToRefreshListView.OnR
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = View.inflate(getActivity(), R.layout.fragment_title,null);
+        if(view!=null){
+            ViewGroup group = (ViewGroup) view.getParent();
+            if(group!=null){
+                group.removeView(view);
+            }
+        }else {
+            view = View.inflate(getActivity(), R.layout.fragment_title, null);
+        }
         return view;
     }
 
