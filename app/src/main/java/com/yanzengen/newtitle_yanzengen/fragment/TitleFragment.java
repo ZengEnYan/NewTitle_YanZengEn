@@ -83,6 +83,7 @@ public class TitleFragment extends Fragment implements PullToRefreshListView.OnR
     public void onPullDownToRefresh(PullToRefreshBase refreshView) {
         currentPager=0;
         isNeedClear=true;
+        url = "http://c.m.163.com/nc/article/headline/"+type+"/"+currentPager+"-20.html";
         HttpUtils.loadDataFromServer(url, NewsContent.class, this);
     }
     //上拉加载的方法
@@ -90,6 +91,7 @@ public class TitleFragment extends Fragment implements PullToRefreshListView.OnR
     public void onPullUpToRefresh(PullToRefreshBase refreshView) {
         currentPager++;
         isNeedClear=false;
+        url = "http://c.m.163.com/nc/article/headline/"+type+"/"+currentPager+"-20.html";
         HttpUtils.loadDataFromServer(url, NewsContent.class, this);;
     }
 
@@ -105,7 +107,7 @@ public class TitleFragment extends Fragment implements PullToRefreshListView.OnR
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                     Intent intent = new Intent(getActivity(),WebViewActivity.class);
-                    intent.putExtra("webViewUrl",newsContents.get(position-1).getUrl());
+                    intent.putExtra("webViewUrl",homeNewsAdapter.getItem(position-1).getUrl());
                     startActivity(intent);
 
             }

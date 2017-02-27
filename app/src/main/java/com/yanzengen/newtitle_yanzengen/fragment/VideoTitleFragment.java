@@ -72,6 +72,7 @@ public class VideoTitleFragment extends Fragment implements PullToRefreshBase.On
 
         pageSize=10;
         isClear=true;
+        url = "http://c.3g.163.com/nc/video/list/"+type+"/n/"+pageSize+"-10.html";
         HttpUtils.loadDataFromServer(url, VideoBean.class,this);
     }
 
@@ -80,6 +81,7 @@ public class VideoTitleFragment extends Fragment implements PullToRefreshBase.On
     public void onPullUpToRefresh(PullToRefreshBase refreshView) {
         pageSize+=10;
         isClear=false;
+        url = "http://c.3g.163.com/nc/video/list/"+type+"/n/"+pageSize+"-10.html";
         HttpUtils.loadDataFromServer(url, VideoBean.class,this);
     }
 
